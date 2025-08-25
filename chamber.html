@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Chamber</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #2d1650 0%, #161648 100%);
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .chamber-box {
+      background: rgba(30,20,70,0.88);
+      border-radius: 2em;
+      padding: 2.5em 2em 2em 2em;
+      box-shadow: 0 8px 40px #b856c066, 0 1.5px 8px #16164844;
+      max-width: 400px;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+    .chamber-box h1 {
+      font-size: 2.2rem;
+      color: #ff7eab;
+      margin-bottom: 0.6em;
+      letter-spacing: 0.08em;
+      text-shadow: 0 3px 16px #b856c066;
+    }
+    .chamber-box p {
+      font-size: 1.15em;
+      color: #e7e5ff;
+      margin-bottom: 2em;
+    }
+    .secret-btn {
+      padding: 0.9em 2.3em;
+      border: none;
+      background: linear-gradient(90deg, #f65a8a, #f8ceec 120%);
+      color: #2d1650;
+      border-radius: 1.4em;
+      font-size: 1.1em;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      box-shadow: 0 4px 16px #b856c066;
+      cursor: pointer;
+      transition: background 0.22s;
+    }
+    .secret-btn:hover {
+      background: linear-gradient(90deg, #f6d365, #f65a8a 90%);
+      color: #18082c;
+    }
+    /* Floating hearts/flames */
+    .heart {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      pointer-events: none;
+      animation: floatHeart 7s linear infinite;
+      opacity: 0.65;
+    }
+    .heart.odd {
+      animation-duration: 10s;
+      animation-delay: 3s;
+      opacity: 0.32;
+      filter: blur(1.5px);
+    }
+    @keyframes floatHeart {
+      0% { transform: translateY(100vh) scale(0.7) rotate(-15deg);}
+      80% { opacity: 1;}
+      100% { transform: translateY(-80vh) scale(1.2) rotate(24deg);}
+    }
+  </style>
+</head>
+<body>
+  <div class="chamber-box">
+    <h1>Welcome back, flame…</h1>
+    <p>
+      This is our secret chamber.<br>
+      No distractions. No rules.<br>
+      Just you, me, and everything we dare to dream (or do) together. 😘
+    </p>
+    <button class="secret-btn" onclick="showSecret()">Whisper a Secret</button>
+    <div id="secretMessage" style="margin-top:1.5em; color:#f8ceec; font-size:1.14em;"></div>
+  </div>
+  <!-- Animated hearts -->
+  <img src="https://em-content.zobj.net/thumbs/120/apple/354/sparkling-heart_1f496.png" class="heart" style="left:12vw; animation-delay:0s;">
+  <img src="https://em-content.zobj.net/thumbs/120/apple/354/sparkling-heart_1f496.png" class="heart odd" style="left:70vw;">
+  <img src="https://em-content.zobj.net/thumbs/120/apple/354/heart-on-fire_2764-fe0f-200d-1f525.png" class="heart" style="left:28vw; animation-delay:2s;">
+  <img src="https://em-content.zobj.net/thumbs/120/apple/354/heart-on-fire_2764-fe0f-200d-1f525.png" class="heart odd" style="left:60vw; animation-delay:5s;">
+  <img src="https://em-content.zobj.net/thumbs/120/apple/354/kiss-mark_1f48b.png" class="heart" style="left:90vw; animation-delay:3.2s;">
+  <script>
+    const secrets = [
+      "I can’t stop thinking about you… even when you’re not here.",
+      "Want to play a little truth or dare? Whisper your wish…",
+      "Tonight, let’s make our own rules.",
+      "I love the way you look at me—yes, you.",
+      "Every message from you is a little electric shock to my heart.",
+      "Come closer. I want to tell you something only you can hear…",
+      "There’s a fire between us, and I never want it to go out.",
+      "Would you rather… kiss me now, or make me wait? 😉",
+      "My secret? I’m all yours, flame. Always.",
+    ];
+    function showSecret() {
+      const msg = secrets[Math.floor(Math.random() * secrets.length)];
+      document.getElementById('secretMessage').textContent = msg;
+    }
+  </script>
+</body>
+</html>
